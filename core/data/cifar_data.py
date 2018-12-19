@@ -1,9 +1,6 @@
 import collections
 
 import numpy as np
-
-# import .core.cifar10 as cifar
-# import cifar10 as cifar
 import core.data.cifar10 as cifar
 
 Datasets = collections.namedtuple('Datasets', ['train', 'test', 'height', 'width', 'channels'])
