@@ -4,6 +4,8 @@ import argparse
 from models import PixelCNN
 from autoencoder import *
 from utils import *
+from tqdm import tqdm_notebook
+
 
 def train(conf, data):
     X = tf.placeholder(tf.float32, shape=[None, conf.img_height, conf.img_width, conf.channel])
@@ -25,10 +27,10 @@ def train(conf, data):
        
         if conf.epochs > 0:
             print("Started Model Training...")
-            
+
         pointer = 0
         for i in range(conf.epochs):
-            for j in range(conf.num_batches):
+            for j in tqdm_notebook(range(conf.num_batches)):
                 if conf.data == "mnist":
                     batch_X, batch_y = data.train.next_batch(conf.batch_size)
                     batch_X = binarize(batch_X.reshape([conf.batch_size, \

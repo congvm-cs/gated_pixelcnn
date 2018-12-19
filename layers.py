@@ -90,6 +90,7 @@ class GatedCNN():
 
             b_f_total = b_f_total + b_f
             b_g_total = b_g_total + b_g
+            
         if self.conditional_image is not None:
             b_f_total = b_f_total + tf.layers.conv2d(self.conditional_image, self.in_dim, 1, use_bias=False, name="ci_f")
             b_g_total = b_g_total + tf.layers.conv2d(self.conditional_image, self.in_dim, 1, use_bias=False, name="ci_g")
