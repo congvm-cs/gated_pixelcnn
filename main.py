@@ -30,11 +30,11 @@ def train(conf, data):
 
         pointer = 0
         for i in range(conf.epochs):
-            for j in tqdmrange(conf.num_batc!python main.py
+            for j in tqdm(range(conf.num_batches)):
                 if conf.data == "mnist":
-                    batch_X, batch_y = data.!python main.pyatch_size)
-                    batch_X = binarize(batch!python main.pysize, \
-                            conf.img_height,!python main.pyhannel]))
+                    batch_X, batch_y = data.train.next_batch(conf.batch_size)
+                    batch_X = binarize(batch_X.reshape([conf.batch_size, \
+                            conf.img_height, conf.img_width, conf.channel]))
                     batch_y = one_hot(batch_y, conf.num_classes) 
                 else:
                     batch_X, pointer = get_batch(data, pointer, conf.batch_size)
